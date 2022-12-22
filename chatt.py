@@ -5,7 +5,7 @@ import queue
 
 
 CLIENT_ID = f'kyh-mqtt-{random.randint(0, 1000)}'
-USERNAME = 'Mohamad'
+USERNAME = ''
 PASSWORD = ''
 BROKER = 'broker.hivemq.com'
 PORT = 1883
@@ -65,7 +65,7 @@ class Chat:
         (Dvs. Skriv inte ut meddelanden du själv skickat)
         """
 
-        if self.username != "Mohamad":
+        if not self.username:
             print(f"Topic: {message.topic}, Message: {message.payload.decode('utf-8')}")
 
     def init_client(self):
@@ -140,3 +140,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
