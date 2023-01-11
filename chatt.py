@@ -1,3 +1,4 @@
+
 import paho.mqtt.client as paho
 import random
 import threading
@@ -64,9 +65,9 @@ class Chat:
         Skriv bara ut meddelandet om det börjar med någon annans användarnamn
         (Dvs. Skriv inte ut meddelanden du själv skickat)
         """
-
-        if not self.username:
-            print(f"Topic: {message.topic}, Message: {message.payload.decode('utf-8')}")
+        msg = message.payload.decode('utf-8')
+        if msg.startswith(f'<{self.username}>'):
+            print(f"Topic: {message.topic}, Message : {message.payload.decode('utf-8')}")
 
     def init_client(self):
         # Subscribe to selected topic
